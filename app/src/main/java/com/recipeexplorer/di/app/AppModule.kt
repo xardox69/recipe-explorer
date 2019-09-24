@@ -8,6 +8,7 @@ import com.recipeexplorer.data.repo.Repository
 import com.recipeexplorer.data.source.remote.IRemote
 import com.recipeexplorer.data.source.remote.RemoteSource
 import com.recipeexplorer.di.ViewModelModule
+import com.recipeexplorer.doman.RecipeMapper
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -41,8 +42,8 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun providesRepository(remote:IRemote): IRepository =
-        Repository(remote)
+    fun providesRepository(remote:IRemote, recipeMapper: RecipeMapper): IRepository =
+        Repository(remote,recipeMapper)
 
     @Provides
     @Singleton
